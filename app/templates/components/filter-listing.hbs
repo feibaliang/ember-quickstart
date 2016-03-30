@@ -2,6 +2,6 @@ Name: {{input value=filter key-up=(action 'autoComplete' filter)}}
 
 <ul>
 {{#each filteredList as |item|}}
-  <li {{action 'choose' item.name}}>{{person-details person=item}}</li>
+  <li {{action 'choose' item.name}}>{{component component person=item}}</li>
 {{/each}}
 </ul>
