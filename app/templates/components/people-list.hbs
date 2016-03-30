@@ -1,7 +1,4 @@
 <h2>{{title}}</h2>
 
-<ul>
-  {{#each people as |person|}}
-    <li>{{person-details person=person}}</li>
-  {{/each}}
-</ul>
+{{filter-listing filteredList=filteredList
+                 autoComplete=(action 'autoComplete')}}

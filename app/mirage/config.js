@@ -1,8 +1,7 @@
 export default function() {
 
-  this.get('/scientists', function() {
-    return {
-      data: [{
+  this.get('/scientists', function(db, request) {
+    const scientists = [{
         type: 'scientists',
         id: 1,
         attributes: {
@@ -22,8 +21,15 @@ export default function() {
         attributes: {
           name: 'Albert Hofmann'
         }
-      }]
-    };
+      }];
+    if(request.queryParams.name !== undefined) {
+      const filteredRentals = scientists.filter(function(i) {
+        return i.attributes.name.toLowerCase().indexOf(request.queryParams.name.toLowerCase()) !== -1;
+      });
+      return { data: filteredRentals };
+    } else {
+      return { data: scientists };
+    }
   });
 
   // These comments are here to help you get started. Feel free to delete them.
